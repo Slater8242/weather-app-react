@@ -1,0 +1,21 @@
+.tempDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  h3 {
+    margin: 0 5px;
+  }
+}
+
+.weatherDescription {
+  display: grid;
+  row-gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.inputError {
+  text-align: center;
+  color: #dd0426;
+}

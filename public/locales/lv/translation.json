@@ -1,0 +1,12 @@
+{
+  "sunrise": "Rītausma",
+  "sunset": "Saulriets",
+  "feelsLike": "Jūtas kā",
+  "humidity": "Mitrums",
+  "pressure": "Spiediens",
+  "wind": "Vējš",
+  "header": {
+    "weather": "Laikapstākļi",
+    "search": "Meklēt"
+  }
+}

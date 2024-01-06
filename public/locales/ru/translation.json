@@ -1,0 +1,12 @@
+{
+  "sunrise": "Рассвет",
+  "sunset": "Закат",
+  "feelsLike": "Чувствуется как",
+  "humidity": "Влажность",
+  "pressure": "Давление",
+  "wind": "Ветер",
+  "header": {
+    "weather": "Погода",
+    "search": "Поиск"
+  }
+}
