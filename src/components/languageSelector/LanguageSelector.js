@@ -2,7 +2,7 @@ export default function LanguageSelector({ changeLang, currentLang }) {
   const langs = {
     en: { nativeName: "English" },
     ru: { nativeName: "Русский" },
-    lv: { nativeName: "Latviešu" },
+    lv: { nativeName: "Latviski" },
   };
 
   return (
@@ -13,6 +13,14 @@ export default function LanguageSelector({ changeLang, currentLang }) {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
+        <img
+          src={`https://flagcdn.com/${
+            currentLang === "en" ? "gb" : currentLang
+          }.svg`}
+          alt={currentLang}
+          width="25px"
+          className="me-2"
+        />
         {langs[currentLang].nativeName}
       </button>
       <ul id="langSelector" className="dropdown-menu dropdown-menu-end">

@@ -4,7 +4,6 @@ import "./dataDisplay.scss";
 export default function DataDisplay({ data, lang }) {
   const iconBase = "https://openweathermap.org/img/wn/";
 
-  console.log(data);
   if (data.length == 2) {
     const [weatherObj, locationObj] = data;
     const { weather, main, sys, wind } = weatherObj;
