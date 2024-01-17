@@ -1,4 +1,4 @@
 # weather-app-react
 
-##Description
+## Description
 In this repository I am sharpening my React, Javascript and bootstrap skills.
