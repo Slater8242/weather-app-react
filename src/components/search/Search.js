@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import searchContext from "../../context/searchContext";
 
-export default function Search({ searchCity }) {
+export default function Search() {
   const [value, setValue] = useState("");
   const [validated, setValidated] = useState("");
   const { t } = useTranslation();
+  const searchCity = useContext(searchContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,15 +16,15 @@ export default function Search({ searchCity }) {
     value.length === 0 ? setValidated(" was-validated") : setValidated("");
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     if (value) {
-      value.length === 0 ? setValidated(" was-validated") : setValidated("");      
+      value.length === 0 ? setValidated(" was-validated") : setValidated("");
     }
-  },[value])
+  }, [value]);
 
   return (
     <form
-      className={`d-flex needs-validation${ validated}`}
+      className={`d-flex needs-validation${validated}`}
       onSubmit={handleSubmit}
       noValidate
     >
@@ -31,7 +33,7 @@ export default function Search({ searchCity }) {
         type="text"
         placeholder={t("header.search")}
         value={value}
-        onInput={e=> {setValue(e.target.value);}}
+        onInput={(e) => setValue(e.target.value)}
         required
       />
       <button className="btn btn-outline-light" type="submit">

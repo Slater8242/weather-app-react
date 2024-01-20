@@ -1,7 +1,7 @@
 export default function DailyForecast() {
- return(
-  <>
-    <button className="btn btn-outline-light">Daily Forecast</button>
-  </>
- ) 
+  return (
+    <>
+      <h1>Hello from Daily Forecast</h1>
+    </>
+  );
 }

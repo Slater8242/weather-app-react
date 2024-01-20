@@ -1,4 +1,9 @@
-export default function LanguageSelector({ changeLang, currentLang }) {
+import { useContext } from "react";
+import languageContext from "../../context/languageContext";
+
+export default function LanguageSelector() {
+  const [changeLang, currentLang] = useContext(languageContext);
+
   const langs = {
     en: { nativeName: "English" },
     ru: { nativeName: "Русский" },
@@ -8,7 +13,7 @@ export default function LanguageSelector({ changeLang, currentLang }) {
   return (
     <div className="dropdown">
       <button
-        className="btn btn-secondary dropdown-toggle"
+        className="btn btn-outline-light dropdown-toggle"
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"

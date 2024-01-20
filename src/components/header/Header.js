@@ -1,17 +1,18 @@
 import { useTranslation } from "react-i18next";
 import Search from "../search/Search";
 import LanguageSelector from "../languageSelector/LanguageSelector";
-import DailyForecast from '../dailyForecast/DailyForecast';
-import { useState } from 'react';
+import DailyForecast from "../dailyForecast/DailyForecast";
+import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
 
-export default function Header({ searchCity, changeLang, currentLang }) {
+export default function Header() {
   const { t } = useTranslation();
-  // const navLinks = ["Home", "Features", "Pricing"]
-  // const [active,setActive] = useState(false);
+  const navLinks = ["Home", "Features", "Pricing"];
+  const [active, setActive] = useState(false);
 
-  // const handleClick =(e)=>{
-  //   setActive(e.target.innerText);
-  // }
+  const handleClick = (e) => {
+    setActive(e.target.innerText);
+  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -19,27 +20,36 @@ export default function Header({ searchCity, changeLang, currentLang }) {
         <a className="navbar-brand" role="button" href="/">
           {t("header.weather")}
         </a>
-        <div className="me-auto">
-          <div className="navbar-nav">
-            {/* {navLinks.map((link, i) => (
-              <a
-                className={`nav-link ${
-                  active === link ? "active" : ""
-                }`}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div className="me-auto navbar-nav">
+            {navLinks.map((link, i) => (
+              <Link
+                to={link.toLowerCase()}
+                className={`nav-link ${active === link ? "active" : ""}`}
                 aria-current="page"
                 href="#"
                 onClick={handleClick}
                 key={i}
               >
-              {link}
-              </a>
-            ))} */}
-            <DailyForecast />
+                {link}
+              </Link>
+            ))}
           </div>
-        </div>
-        <div className="d-flex column-gap-3">
-          <Search searchCity={searchCity} />
-          <LanguageSelector changeLang={changeLang} currentLang={currentLang} />
+          <div className="d-flex column-gap-3">
+            <Search />
+            <LanguageSelector />
+          </div>
         </div>
       </div>
     </nav>
