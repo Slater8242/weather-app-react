@@ -33,7 +33,7 @@ export default function App() {
 
   async function searchCity(inputCity) {
     setData(null);
-    const weatherData = await getWeather(inputCity,lang === "lv" ? "la" : lang,);
+    const weatherData = await getWeather("weather",inputCity,lang === "lv" ? "la" : lang);
     setData(weatherData);
     setCurrCity(inputCity);
   }
@@ -53,7 +53,15 @@ export default function App() {
       {data ? (
         <Routes>
           <Route path="/" element={<DataDisplay data={data} lang={lang} />} />
-          <Route path="features" element={<DailyForecast />} />
+          <Route
+            path="5dayforecast"
+            element={
+              <DailyForecast
+                city={currCity}
+                lang={lang}
+              />
+            }
+          />
         </Routes>
       ) : (
         <Loading />

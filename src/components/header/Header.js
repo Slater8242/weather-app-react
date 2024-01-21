@@ -1,18 +1,13 @@
 import { useTranslation } from "react-i18next";
 import Search from "../search/Search";
 import LanguageSelector from "../languageSelector/LanguageSelector";
-import DailyForecast from "../dailyForecast/DailyForecast";
 import { useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const { t } = useTranslation();
-  const navLinks = ["Home", "Features", "Pricing"];
+  const navLinks = ["5 Day forecast"];
   const [active, setActive] = useState(false);
-
-  const handleClick = (e) => {
-    setActive(e.target.innerText);
-  };
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -35,11 +30,11 @@ export default function Header() {
           <div className="me-auto navbar-nav">
             {navLinks.map((link, i) => (
               <Link
-                to={link.toLowerCase()}
+                to={link.replace(/\s+/g, "").toLowerCase()}
                 className={`nav-link ${active === link ? "active" : ""}`}
                 aria-current="page"
                 href="#"
-                onClick={handleClick}
+                onClick={(e) => setActive(e.target.innerText)}
                 key={i}
               >
                 {link}
