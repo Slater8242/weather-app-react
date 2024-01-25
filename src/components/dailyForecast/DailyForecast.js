@@ -6,7 +6,11 @@ const iconBase = "https://openweathermap.org/img/wn/";
 export default function DailyForecast({city, lang}) {
   const [weatherData, setWeatherData] = useState();
   const [locationData, setLocationData] = useState();
+  const [ipData, setIpData] = useState(null);
+  const [errData, setErrData] = useState(null);
   
+  
+
   useEffect(()=>{
     (async () => {
       const data = await getWeather(
