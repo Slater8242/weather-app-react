@@ -3,7 +3,7 @@ import "./dataDisplay.scss";
 
 export default function DataDisplay({ data, lang }) {
   const iconBase = "https://openweathermap.org/img/wn/";
-  console.log(data);
+
   if (data) {
     const {weatherData, geoCode} = data;
     const { weather, main, sys, wind } = weatherData;

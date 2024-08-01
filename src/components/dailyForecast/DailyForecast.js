@@ -8,8 +8,6 @@ export default function DailyForecast({city, lang}) {
   const [locationData, setLocationData] = useState();
   const [ipData, setIpData] = useState(null);
   const [errData, setErrData] = useState(null);
-  
-  
 
   useEffect(()=>{
     (async () => {
@@ -18,13 +16,14 @@ export default function DailyForecast({city, lang}) {
         city,
         lang === "lv" ? "la" : lang
       );
-      const [weather, location] = data;
+      console.log(data);
+      const {weather, location} = data;
       setWeatherData(weather);
       setLocationData(location)
     })();
   },[])
 
-  if (weatherData !== undefined && locationData !==undefined) {
+  if (weatherData && locationData) {
     const {list} = weatherData;
     console.log(locationData);
     const nameExist = (city) => {
@@ -84,5 +83,11 @@ export default function DailyForecast({city, lang}) {
         </div>
       </>
     );
+  }else{
+    return(
+      <h1>
+        NO DATA
+      </h1>
+    )
   }
 }

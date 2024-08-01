@@ -1,9 +1,10 @@
 const port = 8000;
 const express = require("express");
 const cors = require("cors");
-const {ipConnection} = require("./ipConnection");
-const {geoCoding} = require("./geoCoding");
-const {weather} = require("./weather");
+const { ipConnection } = require("./ipConnection");
+const { geoCoding } = require("./geoCoding");
+const { weather } = require("./weather");
+const { forecast } = require("./forecast");
 
 require("dotenv").config();
 
@@ -42,6 +43,20 @@ app.get("/weather", async (req, res) => {
       req.query.lang
       );
     res.json(weatherData)
+  } catch (error) {
+    return res.status(error)
+  }
+});
+
+app.get("/forecast", async (req, res) => {
+  try {
+    const forecastData = await forecast(
+      req.query.lat,
+      req.query.lon,
+      req.query.units,
+      req.query.lang
+      );
+    res.json(forecastData)
   } catch (error) {
     return res.status(error)
   }
