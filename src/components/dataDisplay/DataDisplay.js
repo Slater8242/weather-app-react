@@ -1,15 +1,11 @@
 import { useTranslation } from "react-i18next";
 import "./dataDisplay.scss";
-import axios from 'axios';
-import { useEffect, useState } from 'react';
 
 export default function DataDisplay({ data, lang }) {
-  const [ipData, setIpData] = useState(null)
-  const [errData, setErrData] = useState(null)
   const iconBase = "https://openweathermap.org/img/wn/";
-
-  if (data.length == 2) {
-    const {weatherData, geoCodeData} = data;
+  console.log(data);
+  if (data) {
+    const {weatherData, geoCode} = data;
     const { weather, main, sys, wind } = weatherData;
     const { t } = useTranslation();
 
@@ -42,12 +38,12 @@ export default function DataDisplay({ data, lang }) {
         </div>
         <div className="weatherDescription">
           <h1>
-            {nameExist(ipData)}
+            {nameExist(geoCode[0])}
             &nbsp;
             <img
-              src={`https://flagcdn.com/${geoCodeData.country.toLowerCase()}.svg`}
+              src={`https://flagcdn.com/${geoCode[0].country.toLowerCase()}.svg`}
               width="45"
-              alt={geoCodeData.country.toLowerCase()}
+              alt={geoCode[0].country.toLowerCase()}
             />
           </h1>
           <h3>

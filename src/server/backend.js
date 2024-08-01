@@ -1,7 +1,6 @@
 const port = 8000;
 const express = require("express");
 const cors = require("cors");
-const axios = require("axios");
 const {ipConnection} = require("./ipConnection");
 const {geoCoding} = require("./geoCoding");
 const {weather} = require("./weather");
